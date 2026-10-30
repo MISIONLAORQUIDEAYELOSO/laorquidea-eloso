@@ -4251,6 +4251,70 @@ SELECT
         animation: none;
       }
     }
+        /* ===================
+   B2B PLATFORM LINK (header + mega menu + footer)
+   =================== */
+    .b2b-link {
+      display: none;
+      align-items: center;
+      gap: 7px;
+      order: 3;
+      padding: 7px 14px;
+      border: 1px solid rgba(17, 60, 43, 0.28);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--color-forest-dark);
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      transition:
+        background 0.25s var(--ease),
+        border-color 0.25s var(--ease),
+        color 0.25s var(--ease),
+        transform 0.25s var(--ease);
+    }
+
+    .b2b-link svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+
+    .b2b-link:hover,
+    .b2b-link:focus-visible {
+      background: var(--color-forest);
+      border-color: var(--color-forest);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    /* En el header solo se muestra desde tablet hacia arriba;
+       en celular el acceso queda dentro del menú (mega menu) */
+    @media (min-width: 768px) {
+      .b2b-link {
+        display: inline-flex;
+      }
+    }
+
+    /* Versión del footer: siempre visible, colores para fondo oscuro */
+    .b2b-link.b2b-link-footer {
+      display: inline-flex;
+      order: 0;
+      margin-top: 22px;
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--color-gold-light);
+    }
+
+    .b2b-link.b2b-link-footer:hover,
+    .b2b-link.b2b-link-footer:focus-visible {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      color: var(--color-forest-dark);
+    }
   </style>
 </head>
 
@@ -4279,6 +4343,13 @@ SELECT
       </a>
 
       <div class="header-actions">
+        <a href="https://fincaslaorquideayeloso.com/" class="b2b-link" target="_blank" rel="noopener">
+          <span data-b2b-label>B2B Platform</span>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
         <div class="lang-select" id="langSelect">
           <button type="button" class="lang-select-toggle" id="langSelectToggle" aria-haspopup="listbox"
             aria-expanded="false">
@@ -4338,9 +4409,11 @@ SELECT
           data-i18n="nav.trazabilidad">Traceability</a>
         <a href="#programa" class="mega-menu-link" data-preview="assets/img/cafe-paisaje-descargable.png"
           data-i18n="nav.certifications">Certifications</a>
-
         <a href="#contacto" class="mega-menu-link" data-preview="assets/img/-Contacto.png"
           data-i18n="nav.contacto">Contact</a>
+                <a href="https://fincaslaorquideayeloso.com/" class="mega-menu-link" target="_blank" rel="noopener">
+          <span data-b2b-label>B2B Platform</span> ↗
+        </a>
       </nav>
 
       <div class="mega-menu-lang lang-select" id="langSelectMobile">
@@ -5809,6 +5882,14 @@ SELECT
               </svg>
             </a>
           </div>
+                    <a href="https://fincaslaorquideayeloso.com/" class="b2b-link b2b-link-footer" target="_blank"
+            rel="noopener">
+            <span data-b2b-label>B2B Platform</span>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
         </div>
         <div class="footer-col">
           <h4 data-i18n="footer.links_title">Links</h4>
@@ -5851,6 +5932,18 @@ SELECT
     document.documentElement.classList.add("i18n-pending");
   </script>
   <script src="languages/language.js"></script>
+    <script>
+    (function () {
+      var labels = { en: "B2B Platform", es: "Plataforma B2B", fr: "Plateforme B2B" };
+      document.addEventListener("oo:langchange", function (e) {
+        if (!e.detail || !e.detail.lang) return;
+        var text = labels[e.detail.lang] || labels.en;
+        document.querySelectorAll("[data-b2b-label]").forEach(function (el) {
+          el.textContent = text;
+        });
+      });
+    })();
+  </script>
   <script>
     (function () {
       "use strict";
