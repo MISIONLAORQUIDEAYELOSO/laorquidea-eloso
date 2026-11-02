@@ -4601,21 +4601,25 @@ SELECT
 <!-- Estilos exclusivos del botón de Origen -->
 <style>
   .oo-origin-cta {
-    display: flex;
-    justify-content: center;
-    margin-top: 26px;
+    display: block;
+    margin-top: 28px;
   }
 
   .oo-origin-btn {
     position: relative;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
-    padding: 17px 40px;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+    white-space: nowrap;
+    padding: 16px 36px;
     background: #113C2B;
     color: #FEFDF3;
     border: 1.5px solid #E0B048;
-    border-radius: 999px;
+    border-radius: 10px;
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -4710,7 +4714,6 @@ SELECT
   @media (max-width: 600px) {
     .oo-origin-btn {
       width: 100%;
-      justify-content: center;
       padding: 15px 24px;
     }
   }
@@ -4770,6 +4773,14 @@ SELECT
               standard — ask to see it</span>
           </li>
         </ul>
+
+        <!-- BOTÓN NUEVO (debajo del texto) -->
+        <div class="oo-origin-cta">
+          <a href="https://fincaslaorquideayeloso.com/origin/" class="oo-origin-btn">
+            <span class="oo-origin-btn__text" data-i18n="origin.cta">Learn more about our origin</span>
+            <span class="oo-origin-btn__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
 
       <div class="origin-image reveal reveal-delay-1">
@@ -4777,14 +4788,6 @@ SELECT
           <video autoplay muted loop playsinline preload="auto">
             <source src="assets/videos/origenhorizontal.mp4" type="video/mp4" />
           </video>
-        </div>
-
-        <!-- BOTÓN NUEVO (debajo del video) -->
-        <div class="oo-origin-cta">
-          <a href="https://fincaslaorquideayeloso.com/origin/" class="oo-origin-btn">
-            <span class="oo-origin-btn__text" data-i18n="origin.cta">Learn more about our origin</span>
-            <span class="oo-origin-btn__arrow" aria-hidden="true">→</span>
-          </a>
         </div>
       </div>
     </div>
