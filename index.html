@@ -4597,117 +4597,224 @@ SELECT
     </section>
 
     <!-- =========================== ORIGEN + DIRECT TRADE (unificado) =========================== -->
-    <section class="origin-section" id="origen" style="background: var(--color-bg)">
-      <div class="container origin-layout">
-        <!-- Orden solicitado por el cliente: 1) Texto de Origen  2) Video -->
-        <div class="origin-bottom">
-          <div class="origin-text reveal">
-            <span class="eyebrow" data-i18n="origin.eyebrow">ORIGIN</span>
-            <h2 data-i18n="origin.title">Authentic Terroir</h2>
-            <span class="origin-divider" aria-hidden="true"></span>
-            <p data-i18n="origin.text" style="margin-bottom: 10px">
-              Our coffee grows in Tierradentro, Cauca, inside the Yaquivá
-              Indigenous Reserve, above 1,400 metres — home to the
-              archaeological park UNESCO named
-              <span style="color: #e0b048; font-weight: 700;">a World Heritage Site</span>
-              in 1995. One container can carry the work of 300 families.
-              300 individual efforts we refuse to leave invisible.
-            </p>
 
-            <ul class="feature-list">
-              <li>
-                <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg></span><span data-i18n="origin.bullet1">300+ named, GPS-verified producer families</span>
-              </li>
-              <li>
-                <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg></span><span data-i18n="origin.bullet2">Agroforestry systems protecting biodiversity, páramo and
-                  water sources</span>
-              </li>
-              <li>
-                <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg></span><span data-i18n="origin.bullet3">A tradition passed down between generations, not just a
-                  supply contract</span>
-              </li>
-              <li>
-                <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg></span><span data-i18n="origin.bullet4">O&O Origin Hub: growers process alongside our own team —
-                  no
-                  industrial middleman</span>
-              </li>
-              <li>
-                <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
-                    <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg></span><span data-i18n="origin.bullet5">Every lot scored under our 65-point Certified Origin
-                  standard — ask to see it</span>
-              </li>
-            </ul>
-          </div>
-          <div class="origin-image reveal reveal-delay-1">
-            <div class="media-frame origin-image-frame">
-              <video autoplay muted loop playsinline preload="auto">
-                <source src="assets/videos/origenhorizontal.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </div>
+<!-- Estilos exclusivos del botón de Origen -->
+<style>
+  .oo-origin-cta {
+    margin-top: 28px;
+  }
+
+  .oo-origin-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 34px;
+    background: #113C2B;
+    color: #FEFDF3;
+    border: 1.5px solid #E0B048;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+    box-shadow: 0 6px 18px rgba(17, 60, 43, 0.25);
+    transition: color 0.45s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  /* Relleno dorado que barre de izquierda a derecha */
+  .oo-origin-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #E0B048;
+    transform: translateX(-101%);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: -1;
+  }
+
+  /* Brillo que cruza el botón */
+  .oo-origin-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(254, 253, 243, 0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.7s ease;
+    z-index: -1;
+  }
+
+  .oo-origin-btn__arrow {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .oo-origin-btn:hover,
+  .oo-origin-btn:focus-visible {
+    color: #113C2B;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(224, 176, 72, 0.45);
+  }
+
+  .oo-origin-btn:hover::before,
+  .oo-origin-btn:focus-visible::before {
+    transform: translateX(0);
+  }
+
+  .oo-origin-btn:hover::after,
+  .oo-origin-btn:focus-visible::after {
+    left: 120%;
+  }
+
+  .oo-origin-btn:hover .oo-origin-btn__arrow,
+  .oo-origin-btn:focus-visible .oo-origin-btn__arrow {
+    transform: translateX(6px);
+  }
+
+  .oo-origin-btn:active {
+    transform: translateY(-1px);
+  }
+
+  .oo-origin-btn:focus-visible {
+    outline: 2px solid #E0B048;
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .oo-origin-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 15px 24px;
+    }
+  }
+</style>
+
+<section class="origin-section" id="origen" style="background: var(--color-bg)">
+  <div class="container origin-layout">
+    <!-- Orden solicitado por el cliente: 1) Texto de Origen  2) Video -->
+    <div class="origin-bottom">
+      <div class="origin-text reveal">
+        <span class="eyebrow" data-i18n="origin.eyebrow">ORIGIN</span>
+        <h2 data-i18n="origin.title">Authentic Terroir</h2>
+        <span class="origin-divider" aria-hidden="true"></span>
+        <p data-i18n="origin.text" style="margin-bottom: 10px">
+          Our coffee grows in Tierradentro, Cauca, inside the Yaquivá
+          Indigenous Reserve, above 1,400 metres — home to the
+          archaeological park UNESCO named
+          <span style="color: #e0b048; font-weight: 700;">a World Heritage Site</span>
+          in 1995. One container can carry the work of 300 families.
+          300 individual efforts we refuse to leave invisible.
+        </p>
+
+        <ul class="feature-list">
+          <li>
+            <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span><span data-i18n="origin.bullet1">300+ named, GPS-verified producer families</span>
+          </li>
+          <li>
+            <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span><span data-i18n="origin.bullet2">Agroforestry systems protecting biodiversity, páramo and
+              water sources</span>
+          </li>
+          <li>
+            <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span><span data-i18n="origin.bullet3">A tradition passed down between generations, not just a
+              supply contract</span>
+          </li>
+          <li>
+            <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span><span data-i18n="origin.bullet4">O&O Origin Hub: growers process alongside our own team —
+              no
+              industrial middleman</span>
+          </li>
+          <li>
+            <span class="leaf-icon"><svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg></span><span data-i18n="origin.bullet5">Every lot scored under our 65-point Certified Origin
+              standard — ask to see it</span>
+          </li>
+        </ul>
+
+        <!-- BOTÓN NUEVO -->
+        <div class="oo-origin-cta">
+          <a href="https://fincaslaorquideayeloso.com/origin/" class="oo-origin-btn">
+            <span data-i18n="origin.cta">Learn more about our origin</span>
+            <span class="oo-origin-btn__arrow" aria-hidden="true">→</span>
+          </a>
         </div>
+      </div>
 
-        <div class="direct-trade-intro reveal">
-          <span class="eyebrow" data-i18n="directTrade.eyebrow">
-            Direct Trade, Verified
-          </span>
-
-          <h2 data-i18n="directTrade.title">
-            Four Margins Disappear. The Origin - The Terroir - Appears
-          </h2>
+      <div class="origin-image reveal reveal-delay-1">
+        <div class="media-frame origin-image-frame">
+          <video autoplay muted loop playsinline preload="auto">
+            <source src="assets/videos/origenhorizontal.mp4" type="video/mp4" />
+          </video>
         </div>
+      </div>
+    </div>
 
-        <div class="chain-compare reveal reveal-delay-1">
-          <div class="chain-block chain-traditional">
-            <span class="chain-label" data-i18n="directTrade.chain_title">
-              Typical Colombian Coffee Chain
-            </span>
+    <div class="direct-trade-intro reveal">
+      <span class="eyebrow" data-i18n="directTrade.eyebrow">
+        Direct Trade, Verified
+      </span>
 
-            <p data-i18n="directTrade.chain_text">
-              Grower → Local trader → Cooperative / Exporter → Importer → Roaster
-            </p>
+      <h2 data-i18n="directTrade.title">
+        Four Margins Disappear. The Origin - The Terroir - Appears
+      </h2>
+    </div>
 
-            <span class="chain-note" data-i18n="directTrade.chain_note">
-              4–5 margins. Origin usually stops at "Colombia."
-            </span>
-          </div>
+    <div class="chain-compare reveal reveal-delay-1">
+      <div class="chain-block chain-traditional">
+        <span class="chain-label" data-i18n="directTrade.chain_title">
+          Typical Colombian Coffee Chain
+        </span>
 
-          <div class="chain-arrow" aria-hidden="true">→</div>
+        <p data-i18n="directTrade.chain_text">
+          Grower → Local trader → Cooperative / Exporter → Importer → Roaster
+        </p>
 
-          <div class="chain-block chain-oo">
-            <span class="chain-label" data-i18n="directTrade.oo_title">
-              The O&amp;O Chain
-            </span>
+        <span class="chain-note" data-i18n="directTrade.chain_note">
+          4–5 margins. Origin usually stops at "Colombia."
+        </span>
+      </div>
 
-            <p data-i18n="directTrade.oo_text">
-              Named grower (GPS-tracked) → O&amp;O Origin Hub (same team that exports)
-              → Your roastery
-            </p>
+      <div class="chain-arrow" aria-hidden="true">→</div>
 
-            <span class="chain-note" data-i18n="directTrade.oo_note">
-              One step. Full visibility, farm to export.
-            </span>
-          </div>
-        </div>
+      <div class="chain-block chain-oo">
+        <span class="chain-label" data-i18n="directTrade.oo_title">
+          The O&amp;O Chain
+        </span>
 
-        <a href="#trazabilidad" class="direct-trade-cta" data-i18n="directTrade.cta">
-          See how we verify this →
-        </a>
-    </section>
+        <p data-i18n="directTrade.oo_text">
+          Named grower (GPS-tracked) → O&amp;O Origin Hub (same team that exports)
+          → Your roastery
+        </p>
+
+        <span class="chain-note" data-i18n="directTrade.oo_note">
+          One step. Full visibility, farm to export.
+        </span>
+      </div>
+    </div>
+
+    <a href="#trazabilidad" class="direct-trade-cta" data-i18n="directTrade.cta">
+      See how we verify this →
+    </a>
+  </div>
+</section>
     <!-- =========================== PRODUCTO =========================== -->
     <section class="section-split" id="producto" style="background: var(--color-bg-alt)">
       <div class="container">
