@@ -4601,7 +4601,9 @@ SELECT
 <!-- Estilos exclusivos del botón de Origen -->
 <style>
   .oo-origin-cta {
-    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    margin-top: 26px;
   }
 
   .oo-origin-btn {
@@ -4609,66 +4611,86 @@ SELECT
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 16px 34px;
+    padding: 17px 40px;
     background: #113C2B;
     color: #FEFDF3;
     border: 1.5px solid #E0B048;
     border-radius: 999px;
     font-size: 0.95rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-decoration: none;
     overflow: hidden;
     isolation: isolate;
-    box-shadow: 0 6px 18px rgba(17, 60, 43, 0.25);
-    transition: color 0.45s ease, transform 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: 0 6px 18px rgba(17, 60, 43, 0.28);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
   }
 
-  /* Relleno dorado que barre de izquierda a derecha */
+  /* Franja de luz que cruza el botón de lado a lado */
   .oo-origin-btn::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: #E0B048;
-    transform: translateX(-101%);
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    top: -20%;
+    left: -70%;
+    width: 55%;
+    height: 140%;
+    background: linear-gradient(
+      100deg,
+      rgba(224, 176, 72, 0) 0%,
+      rgba(224, 176, 72, 0.55) 35%,
+      rgba(255, 244, 200, 0.95) 50%,
+      rgba(224, 176, 72, 0.55) 65%,
+      rgba(224, 176, 72, 0) 100%
+    );
+    transform: skewX(-22deg);
+    filter: blur(2px);
+    transition: left 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: -1;
+    pointer-events: none;
   }
 
-  /* Brillo que cruza el botón */
+  /* Halo dorado suave de fondo al hacer hover */
   .oo-origin-btn::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: -60%;
-    width: 40%;
-    height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(254, 253, 243, 0.35), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.7s ease;
+    inset: 0;
+    background: radial-gradient(circle at 50% 120%, rgba(224, 176, 72, 0.28), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
     z-index: -1;
+    pointer-events: none;
+  }
+
+  .oo-origin-btn__text {
+    position: relative;
+    z-index: 1;
   }
 
   .oo-origin-btn__arrow {
+    position: relative;
+    z-index: 1;
     display: inline-block;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .oo-origin-btn:hover,
   .oo-origin-btn:focus-visible {
-    color: #113C2B;
     transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(224, 176, 72, 0.45);
+    border-color: #F3D27A;
+    box-shadow:
+      0 0 0 1px rgba(224, 176, 72, 0.35),
+      0 12px 30px rgba(224, 176, 72, 0.4),
+      0 0 24px rgba(224, 176, 72, 0.3);
   }
 
   .oo-origin-btn:hover::before,
   .oo-origin-btn:focus-visible::before {
-    transform: translateX(0);
+    left: 125%;
   }
 
   .oo-origin-btn:hover::after,
   .oo-origin-btn:focus-visible::after {
-    left: 120%;
+    opacity: 1;
   }
 
   .oo-origin-btn:hover .oo-origin-btn__arrow,
@@ -4748,14 +4770,6 @@ SELECT
               standard — ask to see it</span>
           </li>
         </ul>
-
-        <!-- BOTÓN NUEVO -->
-        <div class="oo-origin-cta">
-          <a href="https://fincaslaorquideayeloso.com/origin/" class="oo-origin-btn">
-            <span data-i18n="origin.cta">Learn more about our origin</span>
-            <span class="oo-origin-btn__arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
       </div>
 
       <div class="origin-image reveal reveal-delay-1">
@@ -4763,6 +4777,14 @@ SELECT
           <video autoplay muted loop playsinline preload="auto">
             <source src="assets/videos/origenhorizontal.mp4" type="video/mp4" />
           </video>
+        </div>
+
+        <!-- BOTÓN NUEVO (debajo del video) -->
+        <div class="oo-origin-cta">
+          <a href="https://fincaslaorquideayeloso.com/origin/" class="oo-origin-btn">
+            <span class="oo-origin-btn__text" data-i18n="origin.cta">Learn more about our origin</span>
+            <span class="oo-origin-btn__arrow" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </div>
